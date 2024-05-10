@@ -10,6 +10,8 @@ export default function Home() {
   const [currentContext, setCurrentContext] = useState([]);
   const [displayedChats, setDisplayedChats] = useState([]);
 
+  const [counter, setCounter] = useState(0);
+
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };
@@ -76,14 +78,41 @@ export default function Home() {
 
     if (!loginFlag) { return; };
 
-    fetch("/api/pullContexts")
-      .then(response => response.json())
-      .then(data => {
-        setAllContexts(data)
-        setCurrentContext(data.root_context);
-      })
-      .catch(error => console.error('Error fetching data:', error));
+    async function doAsync() {
+      // 先看看aivinci阵营任务完成了没有，没有则先开始这个任务
+      const response = await fetch("/api/aivinciQuizTaskStatus", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          action: 'query'
+        })
+      });
 
+      const data = await response.json();
+      if (data == "completed") {
+        // 完成了后，就进入常态任务模式
+        fetch("/api/pullContexts")
+          .then(response => response.json())
+          .then(data => {
+            setAllContexts(data)
+            setCurrentContext(data.root_context);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      } else {
+        // 执行aivinci阵营任务
+        fetch("/api/aivinciQuizTask")
+          .then(response => response.json())
+          .then(data => {
+            setAllContexts(data)
+            setCurrentContext(data.root_context);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      }
+    }
+
+    doAsync()
 
   }, [loginFlag]);
 
@@ -150,6 +179,45 @@ export default function Home() {
       const data = await response.json();
 
       return data;
+    },
+
+    // counter++
+    addCounter: async () => {
+      console.log("exec addCounter()")
+
+      setCounter(counter + 1);
+    },
+
+    // counter--
+    subCounter: async () => {
+      console.log("exec subCounter()")
+
+      setCounter(counter - 1);
+    },
+
+    // counter << 0
+    resetCounter: async () => {
+      console.log("exec resetCounter()")
+
+      setCounter(0);
+    },
+
+    aivinciQuizeTask: async () => {
+      console.log("exec aivinciQuizeTask()")
+
+      const response = await fetch("/api/aivinciQuizTaskStatus", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          action: 'completeTask',
+          counter: counter
+        })
+      });
+
+      const data = await response.json();
+      return data;
     }
   };
 
@@ -202,6 +270,17 @@ export default function Home() {
     } else if (button.nextContex && allContexts[button.nextContex]) {
       console.log("button.nextContex refresh")
       setCurrentContext(allContexts[button.nextContex]);
+    }
+
+    // 处理post context函数
+    if (button.postCtxFunc) {
+      const func = contextFunctions[button.postCtxFunc];
+
+      if (func) {
+        await func();
+      } else {
+        console.error('Function not found:', button.postCtxFunc);
+      }
     }
   };
 
