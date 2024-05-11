@@ -1,67 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../app/globals.css';  // 确保这个文件中引入了Tailwind CSS
+import { aivinciQuizTask, aivinciQuizTaskStatus, completeAivinciQuizeTask, pullContexts, completeTask, rejectTask, completeTaskWithInput } from '../api/aivinciApi';
 
+import { unLoginContext, rejectLoginContext } from '../data/contextData';
 
 export default function Home() {
 
+  // **********************************
+  // state介绍
+  // **********************************
+
+  // 1. 基础特性：登陆状态
   const [loginFlag, setLoginFlag] = useState(false);
-  const [input, setInput] = useState('');
+
+  // 2. 基础特性：对话相关的状态
   const [allContexts, setAllContexts] = useState({});
   const [currentContext, setCurrentContext] = useState([]);
   const [displayedChats, setDisplayedChats] = useState([]);
 
+  // 3. 进阶特性：给context func用的counter
   const [counter, setCounter] = useState(0);
 
-  // 使用 refs 来存储每个输入框的引用
+  // 4. 测试特性：左侧的json编辑框state
+  const [input, setInput] = useState('');
+
+  // 5. 基础特性：用户输入框的ref
   const inputRefs = useRef({});
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleProcessData = () => {
-    try {
-      const data = JSON.parse(input);
-      setAllContexts(data);
-      setCurrentContext(data.root_context); // Start with root_context
-    } catch (error) {
-      console.error('Error parsing JSON:', error);
-      alert('Invalid JSON input');
-    }
-  };
-
-  // 进入页面，首次加载，aivinci展示unLoginContext
+  // **********************************
+  // useEffect介绍
+  // **********************************
+  // 1. 进入页面，首次加载，aivinci展示unLoginContext
   useEffect(() => {
-    let unLoginContext = [
-      {
-        "speaker": "aivinci",
-        "message": "Welcome to Artela Renaissance!!"
-      },
-      {
-        "speaker": "aivinci",
-        "message": "Go ahead and connect your wallet—let's embark on this crypto renaissance journey together!",
-        "btn": [
-          {
-            "txt": "Connect wallet",
-            "msg": "Alrighty, here I come!",
-            "nextContex": "@func@login"
-          },
-          {
-            "txt": "Not now",
-            "msg": "No now, thanks!",
-            "nextContex": "rejectLoginContext"
-          }
-        ]
-      }
-    ]
-
-    let rejectLoginContext = [
-      {
-        "speaker": "aivinci",
-        "message": "Sure thing, you can connect your wallet anytime using the button in the top right corner!"
-      }
-    ]
-
     setAllContexts(prevContexts => ({
       ...prevContexts,
       rejectLoginContext: rejectLoginContext
@@ -72,56 +42,20 @@ export default function Home() {
       unLoginContext: unLoginContext
     }));
 
-    //Sure thing, you can connect your wallet anytime using the button in the top right corner!
+    // 这个函数会触发CurrentContext的useEffect，把对话打印出来
     setCurrentContext(unLoginContext);
   }, []); // 空依赖数组，仅组件挂载时执行一次
 
-  // 链接钱包后，aivinci展示登陆态的对话(常态，或者任务态)
+  // 2. currentContext这个state的useEffect，会更新的对话打印出来
   useEffect(() => {
 
-    if (!loginFlag) { return; };
-
-    async function doAsync() {
-      // 先看看aivinci阵营任务完成了没有，没有则先开始这个任务
-      const response = await fetch("/api/aivinciQuizTaskStatus", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'query'
-        })
-      });
-
-      const data = await response.json();
-      if (data == "completed") {
-        // 完成了后，就进入常态任务模式
-        fetch("/api/pullContexts")
-          .then(response => response.json())
-          .then(data => {
-            setAllContexts(data)
-            setCurrentContext(data.root_context);
-          })
-          .catch(error => console.error('Error fetching data:', error));
-      } else {
-        // 执行aivinci阵营任务
-        fetch("/api/aivinciQuizTask")
-          .then(response => response.json())
-          .then(data => {
-            setAllContexts(data)
-            setCurrentContext(data.root_context);
-          })
-          .catch(error => console.error('Error fetching data:', error));
-      }
-    }
-
-    doAsync()
-
-  }, [loginFlag]);
-
-  useEffect(() => {
+    //displayedChats是一个“已经打印”到窗口的state
+    //displayedChats的更新，会触发html的刷新，把对话展示出来
     let start = displayedChats.length;
     let end = displayedChats.length + currentContext.length;
+
+    //currentContext是需要显示的一组对话
+    //需要把它加入到displayedChats里
     if (start < end) {
       let i = 0;
       const intervalId = setInterval(() => {
@@ -133,12 +67,54 @@ export default function Home() {
         if (i + start >= end) clearInterval(intervalId);
       }, 500); // 每500毫秒显示一条消息
     }
-  }, [currentContext]);
+  }, [currentContext]); // currentContext更新都会执行
 
-  // context可以配置执行函数，使用@func@xxx
+  // 3. 链接钱包后，更新loginFlag，然后触发aivinci展示登陆态的对话
+  useEffect(() => {
+
+    // 这里看看有没有必要，因为只会登陆一次？
+    if (!loginFlag) { return; };
+
+    // 加载登陆后的对话内容
+    // 用async是因为，里面要执行await
+    async function doAsync() {
+
+      // 先看看aivinci阵营任务（必做任务，且配置在前端）完成了没有，没有则先开始这个任务
+      const data = await aivinciQuizTaskStatus();
+
+      if (data == "completed") {
+        // 完成了后，就进入常态任务模式，去后台拉取任务
+        const data = await pullContexts();
+        setAllContexts(data);
+        setCurrentContext(data.root_context);
+      } else {
+        // 执行aivinci阵营任务
+        const data = await aivinciQuizTask();
+        setAllContexts(data);
+        setCurrentContext(data.root_context);
+      }
+    }
+
+    doAsync()
+
+  }, [loginFlag]); // 登陆完成后会执行
+
+  // **********************************
+  // 函数介绍
+  // **********************************
+
+  // 1. 用户输入框的事件函数
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+
+  // 2. contextFunctions，是context的button的nextContext里可以配置的“功能函数”
+  // 这个函数会执行后，需要返回下一段对话
   const contextFunctions = {
-    // 登陆
-    // 1. 连接钱包
+
+    // 登陆函数
+    // 1. 执行连接钱包
     // 2. 成功后，返回一组context
     login: () => {
       console.log("exec login()")
@@ -157,52 +133,32 @@ export default function Home() {
     // 拉取一段新对话
     pullContexts: async () => {
       console.log("exec pullContexts()")
-
-      const response = await fetch("/api/pullContexts", { method: 'POST' });
-      const data = await response.json();
-
-      return data;
+      return await pullContexts();
     },
 
     // 完成任务
+    // 会向后台调用完成任务接口，并返回下一段对话
     completeTask: async () => {
       console.log("exec completeTask()")
-
-      const response = await fetch("/api/completeTask", { method: 'POST' });
-      const data = await response.json();
-
-      return data;
+      return await completeTask();
     },
 
-    // 完成任务（含input的）
+    // 完成任务（含input的button才能配置这个函数）
+    // 会向后台调用完成携带user input的任务接口，并返回下一段对话
     completeTaskWithInput: async (userInput: string) => {
-      console.log("exec completeTask()")
-
-      const response = await fetch("/api/completeTaskWithInput", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          input: userInput
-        })
-      });
-      const data = await response.json();
-
-      return data;
+      console.log("exec completeTaskWithInput()")
+      return await completeTaskWithInput(userInput);
     },
 
     // 拒绝任务
+    // 会向后台调用拒绝任务接口，并返回下一段对话
     rejectTask: async () => {
       console.log("exec rejectTask()")
-
-      const response = await fetch("/api/rejectTask", { method: 'POST' });
-      const data = await response.json();
-
-      return data;
+      return await rejectTask();
     },
 
     // counter++
+    // 这是一个异步函数，它会去累加一个counter
     addCounter: async () => {
       console.log("exec addCounter()")
 
@@ -210,6 +166,7 @@ export default function Home() {
     },
 
     // counter--
+    // 这是一个异步函数，它会去累减一个counter
     subCounter: async () => {
       console.log("exec subCounter()")
 
@@ -217,58 +174,60 @@ export default function Home() {
     },
 
     // counter << 0
+    // 这是一个异步函数，它会把counter重置为0
     resetCounter: async () => {
       console.log("exec resetCounter()")
 
       setCounter(0);
     },
 
-    aivinciQuizeTask: async () => {
+    // 完成阵营任务
+    // 请求后台，把阵营任务设置为完成
+    completeAivinciQuizeTask: async () => {
       console.log("exec aivinciQuizeTask()")
-
-      const response = await fetch("/api/aivinciQuizTaskStatus", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'completeTask',
-          counter: counter
-        })
-      });
-
-      const data = await response.json();
-      return data;
+      return await completeAivinciQuizeTask(counter);
     }
   };
 
+  // 3. 按钮的处理接口
   const handleButtonAction = async (button, index) => {
+
+    // 1. 如果按钮配置了url，则会打开这个url
     if (button.url) {
       window.open(button.url, '_blank');
     }
 
-    // 隐藏当前消息的按钮
+    // 2. 按钮被点击后，就不再继续显示
+    // 如何实现隐藏：把按钮的buttonsDisplayed设置为false
     const updatedChats = [...displayedChats];
     updatedChats[index] = { ...updatedChats[index], buttonsDisplayed: false };
 
-    // 添加新消息
+    // 3. 按下按钮后，会把用户的消息打印出来
     let userInput = "";
+
+    // 3.1 如果有输入框，先把输入框的内容打印出来
     if (button.input) {
       userInput = inputRefs.current[index]?.value || '';
       console.log("User input for button ", index, " is:", userInput);
-      const newMessage = { speaker: "user", message: userInput, buttonsDisplayed: false }; // 假设用户消息不包含按钮
+      const newMessage = { speaker: "user", message: userInput, buttonsDisplayed: false }; // 用户消息不包含按钮，所以buttonsDisplayed为false 
       updatedChats.push(newMessage);
     }
 
-    const newMessage = { speaker: "user", message: button.msg, buttonsDisplayed: false }; // 假设用户消息不包含按钮
+    // 3.2 其次，把按钮配置的msg字段，打印出来
+    const newMessage = { speaker: "user", message: button.msg, buttonsDisplayed: false };
     updatedChats.push(newMessage);
     setDisplayedChats(updatedChats);
 
-    // Check if button.nextContex is a special POST request format
     console.log("button.nextContex ", button.nextContex)
     console.log("button.nextContex obj ", allContexts[button.nextContex])
 
-    // 是否需要post请求
+    // 4. 处理下nextContex字段
+    // nextContex有几种配置方式
+    // * 直接配置，就会指向下一段对话
+    // * 配置@post@，会去post指定url，获取下一段对话
+    // * 配置@func@，会去执行指定contextFunctions，获取下一段对话
+
+    // 4.1 处理：配置@post@，会去post指定url，获取下一段对话
     if (button.nextContex && button.nextContex.startsWith("@post@")) {
       const url = button.nextContex.split("@post@")[1];
       try {
@@ -282,7 +241,8 @@ export default function Home() {
         console.error('Failed to fetch next context:', error);
         alert('Failed to load the next part of the conversation.');
       }
-    } // 是否需要执行本地函数
+    }
+    // 4.2 处理：配置@func@，会去执行指定contextFunctions，获取下一段对话
     else if (button.nextContex && button.nextContex.startsWith("@func@")) {
       const functionName = button.nextContex.split("@func@")[1];
       const func = contextFunctions[functionName];
@@ -295,12 +255,15 @@ export default function Home() {
       } else {
         console.error('Function not found:', functionName);
       }
-    } else if (button.nextContex && allContexts[button.nextContex]) {
+    }
+
+    // 4.3 处理：直接配置，就会指向下一段对话（在allContexts里面）
+    else if (button.nextContex && allContexts[button.nextContex]) {
       console.log("button.nextContex refresh")
       setCurrentContext(allContexts[button.nextContex]);
     }
 
-    // 处理post context函数
+    // 5. 如果按钮配置了postCtxFunc，会在nextContex处理后，异步执行一个指定contextFunctions，不需要更新执行结果
     if (button.postCtxFunc) {
       const func = contextFunctions[button.postCtxFunc];
 
@@ -309,6 +272,18 @@ export default function Home() {
       } else {
         console.error('Function not found:', button.postCtxFunc);
       }
+    }
+  };
+
+  // 4. 其他测试函数：处理json输入框的事件函数
+  const handleProcessData = () => {
+    try {
+      const data = JSON.parse(input);
+      setAllContexts(data);
+      setCurrentContext(data.root_context); // Start with root_context
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      alert('Invalid JSON input');
     }
   };
 

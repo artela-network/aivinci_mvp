@@ -464,7 +464,7 @@ export default function handler(req, res) {
 
     // 4. 修正最后一个 quizBank_2 的 btn 指向 quizBank_3
     quizContext['quizBank_2'][0].btn.forEach(btn => {
-        btn.nextContex = "@func@aivinciQuizeTask";
+        btn.nextContex = "@func@completeAivinciQuizeTask";
     });
 
     res.status(200).json(quizContext);
