@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../app/globals.css';  // 确保这个文件中引入了Tailwind CSS
 
 
@@ -11,6 +11,9 @@ export default function Home() {
   const [displayedChats, setDisplayedChats] = useState([]);
 
   const [counter, setCounter] = useState(0);
+
+  // 使用 refs 来存储每个输入框的引用
+  const inputRefs = useRef({});
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -171,6 +174,24 @@ export default function Home() {
       return data;
     },
 
+    // 完成任务（含input的）
+    completeTaskWithInput: async (userInput: string) => {
+      console.log("exec completeTask()")
+
+      const response = await fetch("/api/completeTaskWithInput", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          input: userInput
+        })
+      });
+      const data = await response.json();
+
+      return data;
+    },
+
     // 拒绝任务
     rejectTask: async () => {
       console.log("exec rejectTask()")
@@ -231,8 +252,15 @@ export default function Home() {
     updatedChats[index] = { ...updatedChats[index], buttonsDisplayed: false };
 
     // 添加新消息
+    let userInput = "";
+    if (button.input) {
+      userInput = inputRefs.current[index]?.value || '';
+      console.log("User input for button ", index, " is:", userInput);
+      const newMessage = { speaker: "user", message: userInput, buttonsDisplayed: false }; // 假设用户消息不包含按钮
+      updatedChats.push(newMessage);
+    }
+
     const newMessage = { speaker: "user", message: button.msg, buttonsDisplayed: false }; // 假设用户消息不包含按钮
-    // setDisplayedChats(prev => [...prev, newMessage]);
     updatedChats.push(newMessage);
     setDisplayedChats(updatedChats);
 
@@ -260,7 +288,7 @@ export default function Home() {
       const func = contextFunctions[functionName];
 
       if (func) {
-        const data = await func();
+        const data = await func(userInput);
         console.log("data of func,", data)
         setAllContexts(data)
         setCurrentContext(data.root_context);
@@ -313,10 +341,20 @@ export default function Home() {
               {chat.btn && chat.buttonsDisplayed !== false && chat.speaker === 'aivinci' && (
                 <div className="flex justify-start space-x-2 mt-2">
                   {chat.btn.map((button, btnIndex) => (
-                    <button key={btnIndex} onClick={() => handleButtonAction(button, index)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                      {button.txt}
-                    </button>
+                    <div>
+                      {button.input && (
+                        <input
+                          type="text"
+                          placeholder={button.input}
+                          ref={el => inputRefs.current[index] = el} // 创建引用
+                          className="flex-1 p-1 border border-gray-300 rounded"
+                        />
+                      )}
+                      <button key={btnIndex} onClick={() => handleButtonAction(button, index)}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                        {button.txt}
+                      </button>
+                    </div>
                   ))}
                 </div>
               )}

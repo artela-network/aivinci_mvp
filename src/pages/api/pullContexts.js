@@ -105,9 +105,12 @@ export default function handler(req, res) {
 
     const contexts = [nonTaskContext101, nonTaskContext102]
 
-    // 没有任务时，会读取聊天库，随机加载常态对话
+    // 逻辑
+    // 1. 没有任务时，会读取聊天库，随机加载常态对话
 
     const randomIndex = Math.floor(Math.random() * 100) % contexts.length;
 
     res.status(200).json(contexts[randomIndex]);
+
+    // 2. 如果有任务时，会返回一个任务对话
 }
