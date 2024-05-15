@@ -62,20 +62,24 @@ export default function handler(req, res) {
                     root_context: [
                         {
                             "speaker": "aivinci",
-                            "message": "你加密文艺复兴的“Ai Vinci 爱分析”！你获得了3个水晶！",
+                            "message": "Your answer is fascinating!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "达芬奇的数字化体现，由人工智能驱动。完美融合了艺术与技术。最著名的艺术家，同时也深入科学领域。他拥有人类历史上所有数据的知识。对你的所有问题都有答案。只是不要问他关于加密货币市场的动向。就像维特鲁威人一样，他是完美中立无偏的。他的四条手臂和四条腿指向所有可能的方向。你继续提问，他只会告诉你去自己研究（DYOR）。",
+                            "message": "According to my mysterious quiz 🔮, I see you have a unique rationality! The family at the \"Ai Vinci\" Camp can't wait for you to join!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "欢迎加入「Ai Vinci 爱分析」阵营，分享到社交媒体！继续获取3个水晶！",
+                            "message": "Da Vinci’s digital incarnation powerd by Ai. Perfect mix of art and technology. His four arms and four legs are pointing to every possible direction. You get a perfectly researched and reasoned answer without knowing what to do. You keep asking, he’ll just tell you to DYOR.",
+                        },
+                        {
+                            "speaker": "aivinci",
+                            "message": "Welcome to join the \"Ai Vinci\" camp! Share on social media and get 10 crystals!",
                             "btn": [
                                 {
-                                    "txt": "分享",
-                                    "msg": "好咧，我喜欢「Ai Vinci 爱分析」！",
-                                    "url": "https://twitter.com/intent/post?text=Hello+Twitter%21&url=https%3A%2F%2Fexample.com&hashtags=ExampleTag",
+                                    "txt": "Share",
+                                    "msg": "Great test! Let me share!",
+                                    "url": "https://twitter.com/intent/tweet?text=%F0%9F%9A%80%20Just%20joined%20%40Artela_Network%27s%20%23AiVinci%20Camp!%20%F0%9F%96%8A%EF%B8%8F%20Do%20your%20own%20research%2C%20see%20the%20potential%2C%20and%20come%20aboard!%0A%0AExplore%20%26%20join%20me%20to%20boost%20rewards!%0A%0A%23Artela%20%23Renaissance%0Ahttps%3A%2F%2Frenaissance-frontend.vercel.app%2Fvision%3Ft%3Da",
                                     "nextContex": "context_981_share"
                                 }
                             ]
@@ -128,23 +132,28 @@ export default function handler(req, res) {
                 return res.status(200).json(context);
             } else {
                 let context = {
+
                     root_context: [
                         {
                             "speaker": "aivinci",
-                            "message": "你加密文艺复兴的“米开朗增持罗”！",
+                            "message": "Your answer is fascinating!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "米开朗基罗的加长版(XL)。他创作了世界上一些最具启发性、最富表现力的艺术作品。XL是一个真正的信徒。他看到的未来是去中心化的。他对加密货币充满信仰。如果你问他，他的答案总是持有长期，非常长，非常非常长。",
+                            "message": "According to my mysterious quiz 🔮, I see you have a unique sensibility! The family at the \"Michextralooong\" Camp can't wait for you to join!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "欢迎加入「米开朗增持罗」阵营，分享到社交媒体！获取3个水晶！",
+                            "message": "The extra long(XL) version of Michelangelo. He creates some of the most inspiring, expressive artwork in the world. He sees the future as decentralised. He has faith in crypto. If you ask him, his answer is always going long, very long, Michextralooong.",
+                        },
+                        {
+                            "speaker": "aivinci",
+                            "message": "Welcome to join the \"Ai Vinci\" camp! Share on social media and get 10 crystals!",
                             "btn": [
                                 {
-                                    "txt": "分享",
-                                    "msg": "好咧，我喜欢「米开朗增持罗」！",
-                                    "url": "https://twitter.com/intent/post?text=Hello+Twitter%21&url=https%3A%2F%2Fexample.com&hashtags=ExampleTag",
+                                    "txt": "Share",
+                                    "msg": "Great test! Let me share!",
+                                    "url": "https://twitter.com/intent/tweet?text=%F0%9F%9A%80%20Joined%20%40Artela_Network%20%23Michextralooong%20Camp%20for%20the%20Token%20Airdrop!%20%20%241M%20in%20%23BTC%20could%20be%20ours.%20%0A%0A%23Artela%20%23Renaissance%0A%0ABoost%20rewards%20with%20my%20link%3A%20https%3A%2F%2Frenaissance-frontend.vercel.app%2Fvision%3Ft%3Dm",
                                     "nextContex": "context_981_share"
                                 }
                             ]

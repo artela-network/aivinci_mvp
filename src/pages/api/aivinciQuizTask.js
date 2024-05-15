@@ -2,22 +2,31 @@
 export default function handler(req, res) {
 
     let quizContext = {
+
         root_context: [
             {
                 "speaker": "aivinci",
-                "message": "Come join the crypto personality quiz and see which Renaissance figure you'd be in the crypto world!",
+                "message": "Welcome to the Cornerstone stage!",
             },
             {
                 "speaker": "aivinci",
-                "message": "This Renaissance figure will accompany you on your cornerstone journey!",
+                "message": "🎭 Let’s dive into a fun game to start our journey!",
             },
             {
                 "speaker": "aivinci",
-                "message": "Complete the task and claim your x crystals!!",
+                "message": "Discover your crypto personality and join a camp to earn fantastic rewards! 🔓",
+            },
+            {
+                "speaker": "aivinci",
+                "message": "Test three intriguing questions! Unveil your unique crypto persona— #AiVinci or #Michextralooong",
+            },
+            {
+                "speaker": "aivinci",
+                "message": "Trust your instincts, make your choices! Earn your first crystal reward!!",
                 "btn": [
                     {
                         "txt": "Come on!!",
-                        "msg": "So cool, I can't wait to see which crypto Renaissance figure I am!",
+                        "msg": "So cool, I can't wait to see my crypto persona!",
                         "nextContex": ""
                     }
                 ]
@@ -460,7 +469,7 @@ export default function handler(req, res) {
     });
 
     // 3. 修改 root_context 的 nextContex
-    quizContext.root_context[2].btn[0].nextContex = "quizBank_0";
+    quizContext.root_context[4].btn[0].nextContex = "quizBank_0";
 
     // 4. 修正最后一个 quizBank_2 的 btn 指向 quizBank_3
     quizContext['quizBank_2'][0].btn.forEach(btn => {
