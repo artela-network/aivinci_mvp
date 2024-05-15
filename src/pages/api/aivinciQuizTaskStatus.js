@@ -1,5 +1,6 @@
 // pages/api/cache.js
 let cache = false; // 简单的内存缓存
+const shareCampTaskMatch = "%5Ehttps://%5Ba-zA-Z0-9-%5D+(.%5Ba-zA-Z0-9-%5D+)+(%5B/?%5D.*)?$"
 
 export default function handler(req, res) {
     if (req.method !== 'POST') {
@@ -71,6 +72,7 @@ export default function handler(req, res) {
                         {
                             "speaker": "aivinci",
                             "message": "In the crypto renaissance, your role is Ai Vinci!",
+                            "img": '/AiVinci.png',
                             "btn": [
                                 {
                                     "txt": "Ai Vinci?!",
@@ -112,8 +114,8 @@ export default function handler(req, res) {
                                     "msg": "here you are!",
                                     "type": "input",
                                     "input": "your twitter url...",
-                                    "match": "^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/?].*)?$",
-                                    "matchFail": "",
+                                    "match": shareCampTaskMatch,
+                                    "matchFail": "context_101_match_fail",
                                     "nextContex": "@func@completeTaskWithInput"
                                 },
                                 {
@@ -162,6 +164,7 @@ export default function handler(req, res) {
                         {
                             "speaker": "aivinci",
                             "message": "In the crypto renaissance, your role is Michextralooong!",
+                            "img": "/Michex.png",
                             "btn": [
                                 {
                                     "txt": "Michextralooong?!",
@@ -193,7 +196,7 @@ export default function handler(req, res) {
                             ]
                         }
                     ],
-                    
+
                     context_981_share: [
                         {
                             "speaker": "aivinci",
@@ -204,8 +207,8 @@ export default function handler(req, res) {
                                     "msg": "here you are!",
                                     "type": "input",
                                     "input": "your twitter url...",
-                                    "match": "^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/?].*)?$",
-                                    "matchFail": "",
+                                    "match": shareCampTaskMatch,
+                                    "matchFail": "context_101_match_fail",
                                     "nextContex": "@func@completeTaskWithInput"
                                 },
                                 {
