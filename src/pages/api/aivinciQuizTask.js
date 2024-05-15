@@ -37,413 +37,647 @@ export default function handler(req, res) {
     let quizBank = [
         {
             "speaker": "aivinci",
-            "message": "如果可以选择一项artela的能力带回文艺复兴时期，你会选择？",
+            "message": "BTC fell below 60,000 US dollars, wise man, what do you think?",
             "btn": [
                 {
-                    "txt": "无敌的并行，我可以同时画10幅画了！",
-                    "msg": "无敌的并行，我可以同时画10幅画了！",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "无限的aspect，我有无数可以组装的新能力！",
-                    "msg": "无限的aspect，我有无数可以组装的新能力！",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "假如文艺复兴艺术家们决定创立一种新的加密货币，以下哪项可能是他们首先考虑的设计原则？",
-            "btn": [
-                {
-                    "txt": "安全和匿名性",
-                    "msg": "安全和匿名性",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "快速和高效的交易速度",
-                    "msg": "快速和高效的交易速度",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "如果文艺复兴时代的哲学家们分析加密货币市场，他们最可能关注哪一个哲学问题？",
-            "btn": [
-                {
-                    "txt": "加密货币是否会导致财富不均？",
-                    "msg": "加密货币是否会导致财富不均？",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "加密货币是否真的能实现去中心化的承诺？",
-                    "msg": "加密货币是否真的能实现去中心化的承诺？",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "你穿越回了文艺复兴时期你会怎么实现你的去中心化理想？",
-            "btn": [
-                {
-                    "txt": "去你的中心化理想，我要去当达芬奇了！",
-                    "msg": "去你的中心化理想，我要去当达芬奇了！",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "开创全新文艺复兴币！",
-                    "msg": "开创全新文艺复兴币！",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "你会如何向文艺复兴时期的人们推荐ARTELA?",
-            "btn": [
-                {
-                    "txt": "全新的！快速的！并行的！组装的！",
-                    "msg": "全新的！快速的！并行的！组装的！",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "比达芬奇想点子的速度还要快！",
-                    "msg": "比达芬奇想点子的速度还要快！",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "Artela在文艺复兴时期可以类比为？",
-            "btn": [
-                {
-                    "txt": "达芬奇的传世画作蒙娜丽莎！",
-                    "msg": "达芬奇的传世画作蒙娜丽莎！",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "米开朗琪罗的经典作品大卫",
-                    "msg": "米开朗琪罗的经典作品大卫",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        },
-        {
-            "speaker": "aivinci",
-            "message": "你是会选择带着加密的记忆回去文艺复兴时期，还是带着文艺复兴时期来到加密？",
-            "btn": [
-                {
-                    "txt": "回到文艺复兴，用未来知识对以前降维打击。",
-                    "msg": "回到文艺复兴，用未来知识对以前降维打击。",
-                    "postCtxFunc": "addCounter",
-                    "nextContex": "",
-                },
-                {
-                    "txt": "来到加密时期，用文艺复兴的理念创新加密。",
-                    "msg": "来到加密时期，用文艺复兴的理念创新加密。",
-                    "postCtxFunc": "subCounter",
-                    "nextContex": "",
-                },
-            ]
-        }, {
-            "speaker": "aivinci",
-            "message": "OOOMMMMGGG, BTC 跌破 60000美金，智者，你怎么看？",
-            "btn": [
-                {
-                    "txt": "从技术分析角度，重要的是关注比特币价格图表的关键支撑和阻力水平",
-                    "msg": "从技术分析角度，重要的是关注比特币价格图表的关键支撑和阻力水平",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Look at key support and resistance levels on the Bitcoin chart.",
+                    "msg": "Look at key support and resistance levels on the Bitcoin chart.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "没事，市场就是这么波动的，继续看好比特币达到10万美金，坚持加仓！",
-                    "msg": "没事，市场就是这么波动的，继续看好比特币达到10万美金，坚持加仓！",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Stay optimistic, buy more BTC!💰",
+                    "msg": "Stay optimistic, buy more BTC!💰",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "机会来了，此时的你手持1000 ETH, 此时的你会？",
+            "message": "Now you hold 1000 ETH, what will you do?",
             "btn": [
                 {
-                    "txt": "就拿着，合适的时候我还要继续加仓",
-                    "msg": "就拿着，合适的时候我还要继续加仓",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Hold tight, wait for the right moment to add more.",
+                    "msg": "Hold tight, wait for the right moment to add more.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "在做出任何决策之前，我会详细分析市场条件、技术指标和可能影响以太坊的宏观经济因素",
-                    "msg": "在做出任何决策之前，我会详细分析市场条件、技术指标和可能影响以太坊的宏观经济因素",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Analyze market conditions before deciding.",
+                    "msg": "Analyze market conditions before deciding.",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "达芬奇在电脑前面，电脑上放一个BTC 的K线图(经过横盘暴涨的图），此时你会选择",
+            "message": "Da Vinci is in front of the computer, looking at a surging BTC chart. Choose:",
             "btn": [
                 {
-                    "txt": "看到这图形，只有一个选择：买！继续上！",
-                    "msg": "看到这图形，只有一个选择：买！继续上！",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Buy! Keep going! 🙌",
+                    "msg": "Buy! Keep going! 🙌",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "虽然市场暴涨可能预示有利可图，但同时也伴随高风险。我会评估当前持仓的风险承受能力",
-                    "msg": "虽然市场暴涨可能预示有利可图，但同时也伴随高风险。我会评估当前持仓的风险承受能力",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Evaluate risks before buying impulsively.",
+                    "msg": "Evaluate risks before buying impulsively.",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "鲍威尔（meme)还有1分钟要发言了，此时你的选择 ？",
+            "message": "Powell has one minute left to speak. Choose:",
             "btn": [
                 {
-                    "txt": "坚定看多，加仓！准备迎接好消息",
-                    "msg": "坚定看多，加仓！准备迎接好消息",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Buy more! Good news coming! 💥",
+                    "msg": "Buy more! Good news coming! 💥",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "在重要发言前做出决策可能过于仓促。最明智的做法是等待发言内容明确后再做调整。",
-                    "msg": "在重要发言前做出决策可能过于仓促。最明智的做法是等待发言内容明确后再做调整。",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Wait for speech content before adjusting.",
+                    "msg": "Wait for speech content before adjusting.",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "鲍威尔（meme) 还有1分钟要发言了，此前鹰派势力占据上风，此时你的选择 ？",
+            "message": "Shocking news, Ethereum (ETF) founder Vitalik detained!",
             "btn": [
                 {
-                    "txt": "鉴于鹰派势力可能导致市场波动，考虑设置止损和止盈点，以保护资产免受未预见的大幅波动影响",
-                    "msg": "鉴于鹰派势力可能导致市场波动，考虑设置止损和止盈点，以保护资产免受未预见的大幅波动影响",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Confirm news accuracy before reacting.",
+                    "msg": "Confirm news accuracy before reacting.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "美联储迟早要放水，BTC无论如何要上10万美金，每次危机都是加仓好机会",
-                    "msg": "美联储迟早要放水，BTC无论如何要上10万美金，每次危机都是加仓好机会",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Increase ETH holdings, V God is fine!",
+                    "msg": "Increase ETH holdings, V God is fine!",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "文艺复兴时代的画家们正在决定通过加密货币来售卖他们的画作，以下哪种销售策略最适合？",
+            "message": "Elon Musk announced Dogecoin ETF. Your take?",
             "btn": [
                 {
-                    "txt": "设定一个带FOMO的竞价模型，炒热市场气氛，吸引更多投资者持续买入。",
-                    "msg": "设定一个带FOMO的竞价模型，炒热市场气氛，吸引更多投资者持续买入。",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Understand volatility before investing.",
+                    "msg": "Understand volatility before investing.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "为每幅艺术作品创建一个数字证书，使用区块链技术以确保作品的真实性和所有权的不可篡改性",
-                    "msg": "为每幅艺术作品创建一个数字证书，使用区块链技术以确保作品的真实性和所有权的不可篡改性",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Buy Dogecoin! 🐶",
+                    "msg": "Buy Dogecoin! 🐶",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "如果你能和加密货币界的任何一位大佬共进晚餐，你最想选择谁？",
+            "message": "If there was a magic that could fulfill one cryptocurrency wish of yours, what would you wish for?",
             "btn": [
                 {
-                    "txt": "Micheal Strategy - 我会一直买，直到100万美金",
-                    "msg": "Micheal Strategy - 我会一直买，直到100万美金",
-                    "postCtxFunc": "addCounter",
+                    "txt": "More BTC, please!",
+                    "msg": "More BTC, please!",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "巴菲特 - 现在看上去还像是骗局，但我会采取价值投资策略，等到BTC符合我的安全边际后才挥棒",
-                    "msg": "巴菲特 - 现在看上去还像是骗局，但我会采取价值投资策略，等到BTC符合我的安全边际后才挥棒",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Fund global education projects. 📚",
+                    "msg": "Fund global education projects. 📚",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "惊天消息，以太方（ETF）创始人W神被美国政府拘留了",
+            "message": "Apple accepts Bitcoin for iPhones. Thoughts?",
             "btn": [
                 {
-                    "txt": "在处理此类消息时，确认信息的来源和准确性非常重要。避免由于未经验证的消息而做出急躁决策，总是寻找多个可信渠道的信息以支持决策",
-                    "msg": "在处理此类消息时，确认信息的来源和准确性非常重要。避免由于未经验证的消息而做出急躁决策，总是寻找多个可信渠道的信息以支持决策",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Adaptation to market trends.",
+                    "msg": "Adaptation to market trends.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "以太坊更加去中心化了，坚定看多，相信V神没事，加仓",
-                    "msg": "以太坊更加去中心化了，坚定看多，相信V神没事，加仓",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Victory for digital currency, buy more BTC!",
+                    "msg": "Victory for digital currency, buy more BTC!",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "Elon Musk宣布申请狗狗币ETF，智者请问怎么看？",
+            "message": "Cryptocurrency traders sleep less than six hours. Thoughts?",
             "btn": [
                 {
-                    "txt": "尽管狗狗币起初作为一种meme币而存在，其价值主要由社区活动和互联网文化推动，这一新的ETF提案可能会增强其作为投资工具的合法性。然而，投资者在考虑投资前应详细了解其高波动性和非传统的价值驱动因素",
-                    "msg": "尽管狗狗币起初作为一种meme币而存在，其价值主要由社区活动和互联网文化推动，这一新的ETF提案可能会增强其作为投资工具的合法性。然而，投资者在考虑投资前应详细了解其高波动性和非传统的价值驱动因素",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Sleepless nights for BTC!🍷",
+                    "msg": "Sleepless nights for BTC!🍷",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "大利好，加仓狗狗币",
-                    "msg": "大利好，加仓狗狗币",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Prioritize health, improve sleep habits.",
+                    "msg": "Prioritize health, improve sleep habits.",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "如果有一种魔法加密货币可以实现你的一个愿望，你会希望它能做什么？",
+            "message": "Bitcoin network down globally for an hour. Your reaction?",
             "btn": [
                 {
-                    "txt": "给我无限的子弹，买买买比特币",
-                    "msg": "给我无限的子弹，买买买比特币",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Prepare for unexpected technical issues.",
+                    "msg": "Prepare for unexpected technical issues.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "希望这种加密货币可以被用来资助全球范围内的教育项目，尤其是在那些教育资源不足的地区，让每个人都有机会接受良好的教育，增进全球的知识水平和理解力。",
-                    "msg": "希望这种加密货币可以被用来资助全球范围内的教育项目，尤其是在那些教育资源不足的地区，让每个人都有机会接受良好的教育，增进全球的知识水平和理解力。",
-                    "postCtxFunc": "subCounter",
+                    "txt": "BTC is invincible, buy more!",
+                    "msg": "BTC is invincible, buy more!",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "苹果公司宣布接受比特币支付购买iPhone，你怎么看？",
+            "message": "BTC hits 1 million US dollars in 2049. Your status?",
             "btn": [
                 {
-                    "txt": "这是数字货币的胜利，立即用BTC购买苹果产品，持续加仓BTC",
-                    "msg": "这是数字货币的胜利，立即用BTC购买苹果产品，持续加仓BTC",
-                    "postCtxFunc": "addCounter",
+                    "txt": "No emotional investment, unaffected.🧘",
+                    "msg": "No emotional investment, unaffected.🧘",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "苹果公司接受比特币支付标志着其对新兴市场趋势的适应和对技术创新的接受",
-                    "msg": "苹果公司接受比特币支付标志着其对新兴市场趋势的适应和对技术创新的接受",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Hold tight for 1,000,000!",
+                    "msg": "Hold tight for 1,000,000!",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "研究表明加密货币交易者的平均睡眠时间不足六小时，请问你是",
+            "message": "New Cryptocurrency Tax Law Proposal Passed. Thoughts?",
             "btn": [
                 {
-                    "txt": "BTC迟早10万美金，定期定额买，晚上睡大觉",
-                    "msg": "BTC迟早10万美金，定期定额买，晚上睡大觉",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Analyze impact on investments.",
+                    "msg": "Analyze impact on investments.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "长期缺乏充足睡眠确实对我的身体和心理健康产生了不少负面影响。我开始增加了一些有氧运动，并尝试添加一些富含Omega-3的食物到我的饮食中。",
-                    "msg": "长期缺乏充足睡眠确实对我的身体和心理健康产生了不少负面影响。我开始增加了一些有氧运动，并尝试添加一些富含Omega-3的食物到我的饮食中。",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Crypto acceptance grows, stay bullish!🤟",
+                    "msg": "Crypto acceptance grows, stay bullish!🤟",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "突发：比特币网络因未知技术问题全球范围内瘫痪一小时",
+            "message": "Cryptocurrency market exceeds total stock market capitalization",
             "btn": [
                 {
-                    "txt": "这种突发事件提醒我们，尽管区块链技术在安全性和可靠性方面具有显著优势，它仍然可能面临未知技术故障的风险",
-                    "msg": "这种突发事件提醒我们，尽管区块链技术在安全性和可靠性方面具有显著优势，它仍然可能面临未知技术故障的风险",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Mainstream acceptance, expect regulations.",
+                    "msg": "Mainstream acceptance, expect regulations.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "不可能，BTC网路不可能出问题，相信数学的力量，每次Fud都是加仓的机会",
-                    "msg": "不可能，BTC网路不可能出问题，相信数学的力量，每次Fud都是加仓的机会",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Historic moment! Hold tight for the moon!",
+                    "msg": "Historic moment! Hold tight for the moon!",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "2049年，BTC价格达到了100w 美金，此时你的状态",
+            "message": "OMG! BTC took a dive below 60,000 US dollars! What's the wise man's take?",
             "btn": [
                 {
-                    "txt": "我的状态和反应与比特币价格无关，因为我不存在财务利益或情感投资",
-                    "msg": "我的状态和反应与比特币价格无关，因为我不存在财务利益或情感投资",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Check out the key support and resistance levels on the Bitcoin chart.",
+                    "msg": "Check out the key support and resistance levels on the Bitcoin chart.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "死守BTC，坚定看1000w",
-                    "msg": "死守BTC，坚定看1000w",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Chill, just load up on more BTC! 💰",
+                    "msg": "Chill, just load up on more BTC! 💰",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "新的加密货币税法提案通过",
+            "message": "Now that you're sitting on 1000 ETH, what's your next move?",
             "btn": [
                 {
-                    "txt": "新的税法可能会影响加密货币的交易和持有策略，重要的是仔细分析税法变更对个人投资的具体影响。",
-                    "msg": "新的税法可能会影响加密货币的交易和持有策略，重要的是仔细分析税法变更对个人投资的具体影响。",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Take a moment to scrutinize market dynamics before making your move.",
+                    "msg": "Take a moment to scrutinize market dynamics before making your move.",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "虽然面临新的税收政策，但这也意味着加密货币被更广泛地接受和正式化，长期来看是好事，继续看涨！",
-                    "msg": "虽然面临新的税收政策，但这也意味着加密货币被更广泛地接受和正式化，长期来看是好事，继续看涨！",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Hold steady, bide your time for the perfect opportunity to bulk up. ✊",
+                    "msg": "Hold steady, bide your time for the perfect opportunity to bulk up. ✊",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
         },
         {
             "speaker": "aivinci",
-            "message": "加密货币市场首次超过股市总市值",
+            "message": "Da Vinci is in front of the computer, looking at a surging BTC chart. Choose:",
             "btn": [
                 {
-                    "txt": "这标志着加密货币从边缘市场成长为主流金融资产，这将引起更多的监管关注和可能的市场调整。",
-                    "msg": "这标志着加密货币从边缘市场成长为主流金融资产，这将引起更多的监管关注和可能的市场调整。",
-                    "postCtxFunc": "addCounter",
+                    "txt": "Think twice before diving headfirst into this frenzy. 🎸",
+                    "msg": "Think twice before diving headfirst into this frenzy. 🎸",
+                    "postCtxFunc": "addContext",
                     "nextContex": ""
                 },
                 {
-                    "txt": "历史性的时刻！这证明了加密市场的强大潜力和成长速度，继续持有，期待To the Moon！",
-                    "msg": "历史性的时刻！这证明了加密市场的强大潜力和成长速度，继续持有，期待To the Moon！",
-                    "postCtxFunc": "subCounter",
+                    "txt": "Running through my mind? Buy! Ride that wave! 🙌",
+                    "msg": "Running through my mind? Buy! Ride that wave! 🙌",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "With one minute left on the clock, Powell's about to address the world. What's the vibe?",
+            "btn": [
+                {
+                    "txt": "Hold your horses until you hear what he's got to say.🐴",
+                    "msg": "Hold your horses until you hear what he's got to say.🐴",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Load up on more! Good vibes incoming! 💥",
+                    "msg": "Load up on more! Good vibes incoming! 💥",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Hold onto your hats, folks! ETF founder W God's been detained!",
+            "btn": [
+                {
+                    "txt": "Check the facts before you start flipping out.",
+                    "msg": "Check the facts before you start flipping out.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Load up on ETFs! W God's got this! Let's be his guardian angel. 😇",
+                    "msg": "Load up on ETFs! W God's got this! Let's be his guardian angel. 😇",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Elon Musk drops the bomb 💥: Dogecoin ETF on the horizon. What's your move?",
+            "btn": [
+                {
+                    "txt": "Know the game before you start playing.",
+                    "msg": "Know the game before you start playing.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Snatch it up! Doggy's my lucky charm! 🐶",
+                    "msg": "Snatch it up! Doggy's my lucky charm! 🐶",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Imagine a magical cryptocurrency that grants youone wish. What's your dream for it?",
+            "btn": [
+                {
+                    "txt": "I wish for a bottomless ammo crate to fuel my Bitcoin spree! 🔫",
+                    "msg": "I wish for a bottomless ammo crate to fuel my Bitcoin spree! 🔫",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Let's fund global education initiatives. 📚",
+                    "msg": "Let's fund global education initiatives. 📚",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Apple jumps on the Bitcoin bandwagon for iPhones. What's the buzz?",
+            "btn": [
+                {
+                    "txt": "Just Apple keeping up with the digital Joneses.",
+                    "msg": "Just Apple keeping up with the digital Joneses.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Big win for crypto! Time to stock up on more BTC！",
+                    "msg": "Big win for crypto! Time to stock up on more BTC！",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Crypto traders burning the midnight oil, catching less than six hours of shut-eye. What's the verdict?",
+            "btn": [
+                {
+                    "txt": "Prioritize those Z's, folks. Your health's worth more than any trade.",
+                    "msg": "Prioritize those Z's, folks. Your health's worth more than any trade.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Sleepless nights, fueled by the BTC thrill! 🍷",
+                    "msg": "Sleepless nights, fueled by the BTC thrill! 🍷",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Holy smokes! Bitcoin's global network goes dark for an hour. How do you react?",
+            "btn": [
+                {
+                    "txt": "Expect the unexpected in this wild crypto ride.",
+                    "msg": "Expect the unexpected in this wild crypto ride.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "BTC's like the Terminator, unstoppable! Time to grab more!",
+                    "msg": "BTC's like the Terminator, unstoppable! Time to grab more!",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "BTC rockets to 1 million US dollars by 2049. How do you feel?",
+            "btn": [
+                {
+                    "txt": "Zen mode activated, no emotional rollercoasters for me. 🧘",
+                    "msg": "Zen mode activated, no emotional rollercoasters for me. 🧘",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Strap in tight, we're aiming for the moon! 🚀",
+                    "msg": "Strap in tight, we're aiming for the moon! 🚀",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "The New Cryptocurrency Tax Law Proposal is in!",
+            "btn": [
+                {
+                    "txt": "Let's crunch the numbers and see how this shakes up our investments.",
+                    "msg": "Let's crunch the numbers and see how this shakes up our investments.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Big news for the crypto realm! Bulls, unite! 🤟",
+                    "msg": "Big news for the crypto realm! Bulls, unite! 🤟",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Cryptocurrency market surpasses the total stock market capitalization. Your thoughts?",
+            "btn": [
+                {
+                    "txt": "Mainstream's knocking on our door. Brace for regulations.",
+                    "msg": "Mainstream's knocking on our door. Brace for regulations.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                }, {
+                    "txt": "History in the making! Hold on tight, we're headed for the moon! 🌕",
+                    "msg": "History in the making! Hold on tight, we're headed for the moon! 🌕",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Powell (meme): With just one minute remaining, let's weigh our options. The hawks once had the upper hand. What's the call now?",
+            "btn": [
+                {
+                    "txt": "In a world of soaring hawks, it's wise to secure your assets from sudden dives.",
+                    "msg": "In a world of soaring hawks, it's wise to secure your assets from sudden dives.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "When the Federal Reserve finally lets the floodgates open, BTC's journey to $100,000 is inevitable! 👊",
+                    "msg": "When the Federal Reserve finally lets the floodgates open, BTC's journey to $100,000 is inevitable! 👊",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Artistic Revival: Renaissance painters are diving into the world of cryptocurrency for art sales. Which sales tactic reigns supreme?",
+            "btn": [
+                {
+                    "txt": "Elevate each masterpiece with a digital certificate, anchored in blockchain. ⚖",
+                    "msg": "Elevate each masterpiece with a digital certificate, anchored in blockchain. ⚖",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Ignite the market with FOMO-driven bidding wars and luring in eager investors.",
+                    "msg": "Ignite the market with FOMO-driven bidding wars and luring in eager investors.",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Crypto Connoisseur Dinner: If you could dine with any cryptocurrency bigwig, who'd make the cut? 🍽",
+            "btn": [
+                {
+                    "txt": "While it may seem like a wild ride, I'll play the long game with a value investment approach, waiting for BTC to hit my safety net before making moves.",
+                    "msg": "While it may seem like a wild ride, I'll play the long game with a value investment approach, waiting for BTC to hit my safety net before making moves.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Micheal Strategy: I'll keep buying until BTC hits $1 million.",
+                    "msg": "Micheal Strategy: I'll keep buying until BTC hits $1 million.",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Choose one of Artela's abilities to bring back the Renaissance:",
+            "btn": [
+                {
+                    "txt": "Picture this: painting ten masterpieces at once with invincible parallelism!🖼",
+                    "msg": "Picture this: painting ten masterpieces at once with invincible parallelism!🖼",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Unlock infinite possibilities and countless new abilities with Artela's infinite aspects!",
+                    "msg": "Unlock infinite possibilities and countless new abilities with Artela's infinite aspects!",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "If Renaissance artists created a cryptocurrency, what design principle might they prioritize?",
+            "btn": [
+                {
+                    "txt": "Keeping it hush-hush and secure, like hiding treasures in the shadows.",
+                    "msg": "Keeping it hush-hush and secure, like hiding treasures in the shadows.",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Speedy transactions faster than a Renaissance carriage ride!🐎",
+                    "msg": "Speedy transactions faster than a Renaissance carriage ride!🐎",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "If Renaissance philosophers analyzed the cryptocurrency market, what question might they focus on?",
+            "btn": [
+                {
+                    "txt": "Will cryptocurrencies make the rich richer and the poor poorer, or is it all just gold in the wind?",
+                    "msg": "Will cryptocurrencies make the rich richer and the poor poorer, or is it all just gold in the wind?",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Can cryptocurrencies truly break the chains of centralized power, or will the same old kings sit on digital thrones?",
+                    "msg": "Can cryptocurrencies truly break the chains of centralized power, or will the same old kings sit on digital thrones?",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "How would you realize decentralization in the Renaissance?",
+            "btn": [
+                {
+                    "txt": "Channeling your inner AI Vinci to spark a creative revolution that spreads like wildfire!",
+                    "msg": "Channeling your inner AI Vinci to spark a creative revolution that spreads like wildfire!",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Strike up the band and mint a Renaissance coin for the people, by the people!",
+                    "msg": "Strike up the band and mint a Renaissance coin for the people, by the people!",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "How would you recommend ARTELA to Renaissance people?",
+            "btn": [
+                {
+                    "txt": "Step right up and witness the marvel of ARTELA! It's new, it's speedy, it's like having a factory of ideas!",
+                    "msg": "Step right up and witness the marvel of ARTELA! It's new, it's speedy, it's like having a factory of ideas!",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Leapfrog Leonardo da Vinci with ARTELA's lightning-fast innovation and a fountain of ideas! 💡",
+                    "msg": "Leapfrog Leonardo da Vinci with ARTELA's lightning-fast innovation and a fountain of ideas! 💡",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Which Renaissance masterpiece can Artela be compared to?",
+            "btn": [
+                {
+                    "txt": "Artela, the Mona Lisa of innovation, capturing hearts and minds across the ages!",
+                    "msg": "Artela, the Mona Lisa of innovation, capturing hearts and minds across the ages!",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "Artela, standing tall like Michelangelo’s David, a beacon of creativity and strength!",
+                    "msg": "Artela, standing tall like Michelangelo’s David, a beacon of creativity and strength!",
+                    "postCtxFunc": "subContext",
+                    "nextContex": ""
+                }
+            ]
+        },
+        {
+            "speaker": "aivinci",
+            "message": "Would you go back to the Renaissance with encrypted memories or bring Renaissance concepts to the encryption era?",
+            "btn": [
+                {
+                    "txt": "Why not don the cloak of the Renaissance, armed with future wisdom to paint the town red with innovation?",
+                    "msg": "Why not don the cloak of the Renaissance, armed with future wisdom to paint the town red with innovation?",
+                    "postCtxFunc": "addContext",
+                    "nextContex": ""
+                },
+                {
+                    "txt": "It's time to dust off those Renaissance concepts and give encryption a makeover fit for kings and queens! 👑",
+                    "msg": "It's time to dust off those Renaissance concepts and give encryption a makeover fit for kings and queens! 👑",
+                    "postCtxFunc": "subContext",
                     "nextContex": ""
                 }
             ]
