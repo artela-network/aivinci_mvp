@@ -84,12 +84,16 @@ export default function handler(req, res) {
                     context_981_share: [
                         {
                             "speaker": "aivinci",
-                            "message": "太酷了！这是你获得的水晶！",
+                            "message": "太酷了！把你的Post填到这里给我验证吧！",
                             "btn": [
                                 {
-                                    "txt": "和我聊天，探索更多任务!",
-                                    "msg": "Respect! I'm all in with you guys!",
-                                    "nextContex": "@func@pullContexts"
+                                    "txt": "Submit",
+                                    "msg": "here you are!",
+                                    "type": "input",
+                                    "input": "your twitter url...",
+                                    "match": "^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/?].*)?$",
+                                    "matchFail": "",
+                                    "nextContex": "@func@completeTaskWithInput"
                                 },
                                 {
                                     "txt": "Catch ya later!",
@@ -99,6 +103,20 @@ export default function handler(req, res) {
                             ]
                         }
                     ],
+                    context_101_match_fail: [
+                        {
+                            "speaker": "aivinci",
+                            "message": "Your post verify fail! do you wanna try again?",
+                            "btn": [
+                                {
+                                    "txt": "Try again",
+                                    "msg": "Let me try again!",
+                                    "nextContex": "context_981_share"
+                                }
+                            ]
+                        }
+                    ]
+                    ,
                     context_101_end: [
                         {
                             "speaker": "aivinci",
@@ -135,12 +153,16 @@ export default function handler(req, res) {
                     context_981_share: [
                         {
                             "speaker": "aivinci",
-                            "message": "太酷了！这是你获得的水晶！",
+                            "message": "太酷了！把你的Post填到这里给我验证吧！",
                             "btn": [
                                 {
-                                    "txt": "和我聊天，探索更多任务!",
-                                    "msg": "Respect! I'm all in with you guys!",
-                                    "nextContex": "@func@pullContexts"
+                                    "txt": "Submit",
+                                    "msg": "here you are!",
+                                    "type": "input",
+                                    "input": "your twitter url...",
+                                    "match": "^https:\/\/[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+([\/?].*)?$",
+                                    "matchFail": "",
+                                    "nextContex": "@func@completeTaskWithInput"
                                 },
                                 {
                                     "txt": "Catch ya later!",
@@ -150,6 +172,20 @@ export default function handler(req, res) {
                             ]
                         }
                     ],
+                    context_101_match_fail: [
+                        {
+                            "speaker": "aivinci",
+                            "message": "Your post verify fail! do you wanna try again?",
+                            "btn": [
+                                {
+                                    "txt": "Try again",
+                                    "msg": "Let me try again!",
+                                    "nextContex": "context_981_share"
+                                }
+                            ]
+                        }
+                    ]
+                    ,
                     context_101_end: [
                         {
                             "speaker": "aivinci",

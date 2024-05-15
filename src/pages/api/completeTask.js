@@ -8,7 +8,7 @@ export default function handler(req, res) {
         root_context: [
             {
                 "speaker": "aivinci",
-                "message": "Thanks for knocking out that daily task—you've earned yourself x crystals!",
+                "message": "Thanks for knocking out that daily task—you've earned yourself x crystals!"
             },
             {
                 "speaker": "aivinci",
@@ -69,7 +69,7 @@ export default function handler(req, res) {
             }
         ]
     }
-
+    
     const contexts = [success, success, success, fail]
 
     // 返回任务完成后的对话，这里mock了，随机返回结果（4次有1次是提交失败）
