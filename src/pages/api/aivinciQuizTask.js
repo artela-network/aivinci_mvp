@@ -14,10 +14,6 @@ export default function handler(req, res) {
             },
             {
                 "speaker": "aivinci",
-                "message": "Discover your crypto personality and join a camp to earn fantastic rewards! 🔓",
-            },
-            {
-                "speaker": "aivinci",
                 "message": "Test three intriguing questions! Unveil your unique crypto persona— #AiVinci or #Michextralooong",
             },
             {

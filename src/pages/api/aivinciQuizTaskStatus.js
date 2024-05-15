@@ -62,19 +62,36 @@ export default function handler(req, res) {
                     root_context: [
                         {
                             "speaker": "aivinci",
-                            "message": "Your answer is fascinating!",
+                            "message": "Your answer is quite interesting!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "According to my mysterious quiz 🔮, I see you have a unique rationality! The family at the \"Ai Vinci\" Camp can't wait for you to join!",
+                            "message": "According to my mysterious quiz 🔮, you exhibit a very unique rationality!🤔",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "Da Vinci’s digital incarnation powerd by Ai. Perfect mix of art and technology. His four arms and four legs are pointing to every possible direction. You get a perfectly researched and reasoned answer without knowing what to do. You keep asking, he’ll just tell you to DYOR.",
+                            "message": "In the crypto renaissance, your role is Ai Vinci!",
+                            "btn": [
+                                {
+                                    "txt": "Ai Vinci?!",
+                                    "msg": "Ai Vinci?!",
+                                    "nextContex": "context_981_intro"
+                                }
+                            ]
+                        }
+                    ],
+                    context_981_intro: [
+                        {
+                            "speaker": "aivinci",
+                            "message": "Da Vinci’s digital incarnation powerd by Ai. Perfect mix of art and technology. ",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "Welcome to join the \"Ai Vinci\" camp! Share on social media and get 10 crystals!",
+                            "message": "His four arms and four legs are pointing to every possible direction. You get a perfectly researched and reasoned answer without knowing what to do. You keep asking, he’ll just tell you to DYOR.",
+                        },
+                        {
+                            "speaker": "aivinci",
+                            "message": "Welcome to the \"Ai Vinci\" camp! Share this news on social media and claim your crystals!",
                             "btn": [
                                 {
                                     "txt": "Share",
@@ -136,19 +153,36 @@ export default function handler(req, res) {
                     root_context: [
                         {
                             "speaker": "aivinci",
-                            "message": "Your answer is fascinating!",
+                            "message": "Your answer is quite interesting!",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "According to my mysterious quiz 🔮, I see you have a unique sensibility! The family at the \"Michextralooong\" Camp can't wait for you to join!",
+                            "message": "According to my mysterious quiz 🔮, you exhibit a very unique sensibility!🤔",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "The extra long(XL) version of Michelangelo. He creates some of the most inspiring, expressive artwork in the world. He sees the future as decentralised. He has faith in crypto. If you ask him, his answer is always going long, very long, Michextralooong.",
+                            "message": "In the crypto renaissance, your role is Michextralooong!",
+                            "btn": [
+                                {
+                                    "txt": "Michextralooong?!",
+                                    "msg": "Michextralooong?!",
+                                    "nextContex": "context_981_intro"
+                                }
+                            ]
+                        }
+                    ],
+                    context_981_intro: [
+                        {
+                            "speaker": "aivinci",
+                            "message": "The extra long(XL) version of Michelangelo. He creates some of the most inspiring, expressive artwork in the world. ",
                         },
                         {
                             "speaker": "aivinci",
-                            "message": "Welcome to join the \"Ai Vinci\" camp! Share on social media and get 10 crystals!",
+                            "message": "He sees the future as decentralised. He has faith in crypto. If you ask him, his answer is always going long, very long, Michextralooong.",
+                        },
+                        {
+                            "speaker": "aivinci",
+                            "message": "Welcome to the \"Michextralooong\" camp! Share this news on social media and claim your crystals!",
                             "btn": [
                                 {
                                     "txt": "Share",
@@ -159,6 +193,7 @@ export default function handler(req, res) {
                             ]
                         }
                     ],
+                    
                     context_981_share: [
                         {
                             "speaker": "aivinci",
