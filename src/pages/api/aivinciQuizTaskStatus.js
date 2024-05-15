@@ -88,7 +88,7 @@ export default function handler(req, res) {
                     context_981_share: [
                         {
                             "speaker": "aivinci",
-                            "message": "太酷了！把你的Post填到这里给我验证吧！",
+                            "message": "That's cool! Submit your tweet link for verification and win rewards!",
                             "btn": [
                                 {
                                     "txt": "Submit",
@@ -162,7 +162,7 @@ export default function handler(req, res) {
                     context_981_share: [
                         {
                             "speaker": "aivinci",
-                            "message": "太酷了！把你的Post填到这里给我验证吧！",
+                            "message": "That's cool! Submit your tweet link for verification and win rewards!",
                             "btn": [
                                 {
                                     "txt": "Submit",
